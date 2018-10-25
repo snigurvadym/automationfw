@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Regression for google search tests" verbose="1" parallel="methods" thread-count="4">
+  <test name="TestChrome">
+    	<parameter name="searchWord" value="automation"/>
+    	<classes>
+			<class name="web.test.com.autotests.GoogleSearchTests">
+				<methods>
+                    <parameter name="resultLink" value="0"/>
+      				<include name = "searchWordInTitleForFirstResultLink"/>
+                    <parameter name="domainToCheck" value="testautomationday.com"/>
+                    <parameter name="pageIndexFrom" value="1"/>
+                    <parameter name="pageIndexTo" value="5"/>
+      				<include name = "searchDomainWordInResultLinksAndPages"/>
+				</methods>
+			</class>
+			<class name="web.test.com.autotests.OtherSiteTests">
+				<methods>
+					<include name = "openOtherSiteInBrowser"/>
+				</methods>
+			</class>
+    	</classes>
+  </test>
+</suite>
