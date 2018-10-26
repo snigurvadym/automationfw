@@ -1,0 +1,2 @@
+killall chromedriver
+killall geckodriver

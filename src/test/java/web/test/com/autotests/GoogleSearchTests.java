@@ -10,7 +10,7 @@ import static org.testng.Assert.assertTrue;
 
 @Listeners({TestListener.class})
 public class GoogleSearchTests {
-	
+
 	@Test(description = "Open the first link on search results page. Verify that title contains searched word.")
 	@Parameters({ "searchWord", "resultLink" })
 	public void searchWordInTitleForFirstResultLink(
@@ -32,6 +32,7 @@ public class GoogleSearchTests {
 			@Optional("www.redhat.com") String domainToCheck,
 			@Optional("1") int pageIndexFrom,
 			@Optional("5") int pageIndexTo) {
+
 		int detectedDomains = 0;
 		GooglePage googlePage = new GooglePage().search(searchWord);
 		Log.info(String.format("Verify '%s' domain in the results links from page %s to %s",
@@ -44,11 +45,11 @@ public class GoogleSearchTests {
 
 		assertTrue(detectedDomains > 0,
 				String.format("Domain '%s' isn't in the result links from page %s to page %s",
-					domainToCheck,
-					pageIndexFrom,
-					pageIndexTo));
+						domainToCheck,
+						pageIndexFrom,
+						pageIndexTo));
 	}
-	
+
 	@AfterMethod
 	public void close() {
 		Browser.close();

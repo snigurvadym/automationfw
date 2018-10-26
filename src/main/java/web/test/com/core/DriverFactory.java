@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.Reporter;
 import web.test.com.core.browsers.Chrome;
+import web.test.com.core.browsers.Edge;
 import web.test.com.core.browsers.Firefox;
-import web.test.com.core.browsers.InternetExplorer;
 
 public class DriverFactory {
 
@@ -39,8 +39,8 @@ public class DriverFactory {
                         setWebDriver(new Firefox().getDriver());
                         break;
                     }
-                    case BrowserType.IEXPLORE : {
-                        setWebDriver(new InternetExplorer().getDriver());
+                    case BrowserType.EDGE : {
+                        setWebDriver(new Edge().getDriver());
                         break;
                     }
                     default: {
