@@ -30,7 +30,7 @@ public class GoogleResultsPage extends BasePage {
 		Log.info("Pick pagination index " + index);
 		try {
             for (WebElement paginationLink:paginationLinks) {
-                if (paginationLink.getText().equalsIgnoreCase(index)) {
+                if (paginationLink.getText().replaceAll("[^0-9]","").equalsIgnoreCase(index)) {
                     paginationLink.click();
                     break;
                 }
@@ -49,7 +49,11 @@ public class GoogleResultsPage extends BasePage {
 		Log.info("Get result links from the page");
 		List<String> links = new ArrayList<String>();
 		for (WebElement link : resultLinks) {
-			links.add(link.getAttribute("href"));
+			try {
+				links.add(link.getAttribute("href"));
+			} catch (Exception e) {
+				Log.error(e.getMessage());
+			}
 		}
 		return links;
 	}
