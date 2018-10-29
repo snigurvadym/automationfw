@@ -11,11 +11,6 @@ public abstract class BasePage {
 		PageFactory.initElements(DriverFactory.getWebDriver(), this);
 	}
 
-	/**
-	 * scroll page to the needed element and return this element for next actions
-	 * @param webElement - invisible element or visible partially
-	 * @return web element after scrolling
-	 */
 	protected WebElement scrollIntoView(WebElement webElement) {
 		((JavascriptExecutor) DriverFactory.getWebDriver())
 				.executeScript("arguments[0].scrollIntoView(true)", webElement);

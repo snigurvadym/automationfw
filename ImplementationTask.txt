@@ -4,3 +4,57 @@ on search results page. Verify that title contains searched word
 2. Test #2. Open Google. Search for “automation”. Verify that there is
 expected domain (“testautomationday.com”) on search results
 pages (page: 1-5).
+
+Комменты:
+
+- searchDomainWordInResultLinksAndPages() does not switch to page #2 (it jumped from the 1st to 3rd page at once during run)
+2018-10-26 12:08:21 INFO  [main] Thread: Open browser
+2018-10-26 12:08:21 INFO  [main] Thread: Search for 'automation'
+2018-10-26 12:08:23 INFO  [main] Thread: Verify 'www.redhat.com' domain in the results links from page 1 to 5
+2018-10-26 12:08:28 INFO  [main] Thread: Get result links from the page
+2018-10-26 12:08:45 INFO  [main] Thread: Pick pagination index 1
+2018-10-26 12:09:45 ERROR [main] Thread: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@class='csb ch']/../../a[text()='1']"}
+  (Session info: chrome=70.0.3538.67)
+  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 10.0.14393 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 60.04 seconds
+[VS] - fixed, this was really my bug after refactoring;
+
+- it is better to add .idea folder to .ignore
+[VS] - I've removed IDEA project files;
+
+- move .sh and .cmd files to separate folder
+[VS] - I've moved these files into src\tools folder created;
+
+- Incapsulation (add private, package-private to methods). for example DriverFactory
+[VS] - updated access modifiers most of the fields and methods;
+
+- Suggest to hide business login and technical implementation from searchDomainWordInResultLinksAndPages() method {for loop to some inner method}
+
+- I would suggest remove "@Optional("1") int pageIndexFrom" and "@Optional("1") int resultLink"
+[VS] - I've removed these two parameters;
+
+- "page+1" could be changed by "page++" or "++page"
+[VS] - I've updated logic properly;
+
+- Suggest to remove Logs from Test layer to some inner layers
+[VS] - I've removed log actions from the test scenarios.
+
+- Locator is hardcoded inside code -> should be extracted as a field to top of the page (//*[@class='csb ch']/../../a[text()='"+index+"'])
+[VS] - I've removed hardcoded logic and added list of the fields to find by page factory;
+
+- Locator is not optimized (//*[@class='csb ch']/../../a[text()='"+index+"'])
+[VS] - I've optimized xPath locator for this locator.
+
+- I am not sure you need to scrollIntoView, as I know WebDriver does that itself
+[VS] - I've removed method and action for scrolling.
+
+- Could be good to split Google Page Object to Google page object and GoogleResultsPage page objects
+[VS] - I've splitted this page into GoogleResultsPage and GoogleSearchPage as was suggested;
+
+- could be good to use WebDriverManager (bonigarcia) to remove dependencies of chromeDriver, firefoxDriver and others. Independent of OSs.
+    <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>2.2.1</version>
+    </dependency>
+[VS] - I've added this dependency and use this factory and added usage of this library into browser implementations.

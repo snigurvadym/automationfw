@@ -10,9 +10,9 @@ import web.test.com.core.browsers.Firefox;
 
 public class DriverFactory {
 
-    static ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
+    private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
 
-    public static void setWebDriver(WebDriver driver) {
+    static void setWebDriver(WebDriver driver) {
         webDriver.set(driver);
     }
 
@@ -29,7 +29,6 @@ public class DriverFactory {
             String browserToUse=Configuration.data.getBrowserName();
             Log.info("Instantiate web driver " + browserToUse);
             try {
-                System.setProperty(Configuration.data.getDriverName(), Configuration.data.getDriverPath());
                 switch (browserToUse) {
                     case BrowserType.CHROME : {
                         setWebDriver(new Chrome().getDriver());

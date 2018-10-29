@@ -15,7 +15,6 @@ public class Browser {
     public static void close() {
         Log.info("Close browser");
         if (DriverFactory.getWebDriver(false)!=null) {
-
             DriverFactory.getWebDriver().quit();
             DriverFactory.setWebDriver(null);
         }

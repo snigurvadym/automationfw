@@ -6,10 +6,8 @@
 		<classes>
 			<class name="web.test.com.autotests.GoogleSearchTests">
 				<methods>
-					<parameter name="resultLink" value="0"/>
 					<include name = "searchWordInTitleForFirstResultLink"/>
 					<parameter name="domainToCheck" value="testautomationday.com"/>
-					<parameter name="pageIndexFrom" value="1"/>
 					<parameter name="pageIndexTo" value="5"/>
 					<include name = "searchDomainWordInResultLinksAndPages"/>
 				</methods>

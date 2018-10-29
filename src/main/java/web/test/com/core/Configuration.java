@@ -9,15 +9,16 @@ public class Configuration {
 
     private final static String confFile = "src/main/java/web/test/com/resources/config.properties";
 
-    static Properties properties = new Properties();
+    private static Properties properties = new Properties();
 
-    static InputStream input = null;
-    public static Configuration data = new Configuration();
+    private static InputStream input = null;
+
+    protected static Configuration data = new Configuration();
 
     private String baseUrl;
+
     private String browserName;
-    private String driverName;
-    private String driverPath;
+
     private String waitTimeSeconds;
 
     public String getBaseUrl() {
@@ -28,7 +29,7 @@ public class Configuration {
         this.baseUrl = baseUrl;
     }
 
-    public String getBrowserName() {
+    protected String getBrowserName() {
         return browserName;
     }
 
@@ -36,27 +37,11 @@ public class Configuration {
         this.browserName = browserName;
     }
 
-    public String getDriverName() {
-        return driverName;
-    }
-
-    public void setDriverName(String driverName) {
-        this.driverName = driverName;
-    }
-
-    public String getDriverPath() {
-        return driverPath;
-    }
-
-    public void setDriverPath(String driverPath) {
-        this.driverPath = driverPath;
-    }
-
-    public String getWaitTimeSeconds() {
+    protected String getWaitTimeSeconds() {
         return waitTimeSeconds;
     }
 
-    public void setWaitTimeSeconds(String waitTimeSeconds) {
+    protected void setWaitTimeSeconds(String waitTimeSeconds) {
         this.waitTimeSeconds = waitTimeSeconds;
     }
 
@@ -67,8 +52,6 @@ public class Configuration {
 
             data.setBaseUrl(properties.getProperty("baseUrl"));
             data.setBrowserName(properties.getProperty("browserName"));
-            data.setDriverName(properties.getProperty("driverName"));
-            data.setDriverPath(properties.getProperty("driverPath"));
             data.setWaitTimeSeconds(properties.getProperty("waitTimeSeconds"));
 
         } catch (IOException ex) {
