@@ -49,7 +49,9 @@ public class DriverFactory {
                 }
                 int waitTimeForAppear = Integer.valueOf(Configuration.data.getWaitTimeSeconds());
                 webDriver.get().manage().timeouts().implicitlyWait(waitTimeForAppear, TimeUnit.SECONDS);
-                webDriver.get().manage().timeouts().pageLoadTimeout(waitTimeForAppear, TimeUnit.SECONDS);
+                if (!browserToUse.equalsIgnoreCase(BrowserType.FIREFOX)) {
+                    webDriver.get().manage().timeouts().pageLoadTimeout(waitTimeForAppear, TimeUnit.SECONDS);
+                }
                 webDriver.get().manage().window().maximize();
                 webDriver.get().get(Configuration.data.getBaseUrl());
             } catch (Exception e) {

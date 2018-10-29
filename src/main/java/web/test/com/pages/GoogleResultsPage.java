@@ -27,10 +27,10 @@ public class GoogleResultsPage extends BasePage {
     }
 
 	private void pickResultPage(String index) {
-		Log.info("Pick pagination index " + index);
 		try {
             for (WebElement paginationLink:paginationLinks) {
                 if (paginationLink.getText().replaceAll("[^0-9]","").equalsIgnoreCase(index)) {
+                    Log.info("Click pagination index " + index);
                     paginationLink.click();
                     break;
                 }
