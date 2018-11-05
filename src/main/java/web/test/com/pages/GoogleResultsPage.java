@@ -40,9 +40,9 @@ public class GoogleResultsPage extends BasePage {
 		}
 	}
 
-	public void clickResultLink(int linkNum) {
+	public void clickResultLink(String linkNum) {
 		Log.info("Click result link " + linkNum);
-		resultLinks.get(linkNum).click();
+		resultLinks.get(Integer.valueOf(linkNum)).click();
 	}
 
 	private List<String> getResultLinks() {

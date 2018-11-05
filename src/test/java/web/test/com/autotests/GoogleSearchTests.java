@@ -14,7 +14,7 @@ public class GoogleSearchTests {
 	public void searchWordInTitleForFirstResultLink(
 			@Optional("automation") String searchWord
 	) {
-		byte firstLinkIndex = 0;
+		String firstLinkIndex = "0";
 		new GoogleSearchPage()
 				.search(searchWord)
 				.clickResultLink(firstLinkIndex);

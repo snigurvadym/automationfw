@@ -50,7 +50,74 @@
       <artifactId>webdrivermanager</artifactId>
 	  <version>2.2.1</version>
 	</dependency>
-
+	  <dependency>
+		  <groupId>net.masterthought</groupId>
+		  <artifactId>cucumber-reporting</artifactId>
+		  <version>3.8.0</version>
+	  </dependency>
+	  <dependency>
+		  <groupId>info.cukes</groupId>
+		  <artifactId>cucumber-java</artifactId>
+		  <version>1.2.5</version>
+		  <scope>test</scope>
+	  </dependency>
+	  <dependency>
+		  <groupId>info.cukes</groupId>
+		  <artifactId>cucumber-jvm-deps</artifactId>
+		  <version>1.0.5</version>
+		  <scope>test</scope>
+	  </dependency>
+      <dependency>
+          <groupId>info.cukes</groupId>
+          <artifactId>cucumber-testng</artifactId>
+          <version>1.2.5</version>
+          <scope>compile</scope>
+          <exclusions>
+              <exclusion>
+                  <groupId>junit</groupId>
+                  <artifactId>junit</artifactId>
+              </exclusion>
+          </exclusions>
+      </dependency>
   </dependencies>
-
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.14.1</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>src/test/java/web/test/com/suts/google_tests.xml</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>net.masterthought</groupId>
+				<artifactId>maven-cucumber-reporting</artifactId>
+				<version>3.8.0</version>
+				<executions>
+					<execution>
+						<id>execution</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<projectName>automationfw-newBranch</projectName>
+							<outputDirectory>target/cucumber-reports/advanced-reports</outputDirectory>
+							<cucumberOutput>target/cucumber-reports/CucumberTestReport.json</cucumberOutput>
+							<buildNumber>1</buildNumber>
+							<parallelTesting>false</parallelTesting>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
