@@ -6,5 +6,5 @@ Feature: Search Page
   Scenario: User navigates to page www.google.com
     Given I am on the "Google search" page on URL "www.google.com"
     When I fill in search field with "automation"
-    When I click link "1" in the search results page
+    When I click link "0" in the search results page
     Then I should see "automation" in the search results page caption
