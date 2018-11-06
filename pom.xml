@@ -45,7 +45,6 @@
 		<artifactId>log4j</artifactId>
 		<version>1.2.17</version>
 	</dependency>
-
     <dependency>
 	  <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
@@ -102,7 +101,7 @@
 				<version>2.14.1</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>src/test/java/web/test/com/suts/testng.xml</suiteXmlFile>
+						<suiteXmlFile>src/test/java/web/test/com/suts/cucumber_testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>

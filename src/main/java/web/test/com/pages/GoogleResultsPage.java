@@ -26,6 +26,10 @@ public class GoogleResultsPage extends BasePage {
 	    return detectedDomains;
     }
 
+	public int findDomainInResults(String domainToCheck, String pageIndexTo) {
+		return findDomainInResults(domainToCheck, Integer.valueOf(pageIndexTo));
+	}
+
 	private void pickResultPage(String index) {
 		try {
             for (WebElement paginationLink:paginationLinks) {

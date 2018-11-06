@@ -9,7 +9,7 @@
 					<include name = "searchWordInTitleForFirstResultLink"/>
 					<parameter name="domainToCheck" value="testautomationday.com"/>
 					<parameter name="pageIndexTo" value="5"/>
-					<!--<include name = "searchDomainWordInResultLinksAndPages"/>-->
+					<include name = "searchDomainWordInResultLinksAndPages"/>
 				</methods>
 			</class>
 		</classes>

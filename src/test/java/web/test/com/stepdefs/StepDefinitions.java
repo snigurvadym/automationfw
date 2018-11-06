@@ -6,7 +6,6 @@ import cucumber.api.java.en.When;
 import web.test.com.core.Browser;
 import web.test.com.pages.GoogleResultsPage;
 import web.test.com.pages.GoogleSearchPage;
-
 import static org.testng.Assert.assertTrue;
 
 public class StepDefinitions {
@@ -36,4 +35,13 @@ public class StepDefinitions {
                 String.format("Search word '%s' was not detected in the title", searchWord));
     }
 
+    @Then("^I should see \"([^\"]*)\" in the some result page till pagination \"([^\"]*)\"$")
+    public void i_should_see_in_the_some_result_page_till_pagination(String domainToCheck, String pageIndexTo) {
+        assertTrue(
+                googleResultsPage
+                        .findDomainInResults(domainToCheck,pageIndexTo) > 0,
+                String.format("Domain '%s' isn't in the result links from first page to page %s",
+                        domainToCheck,
+                        pageIndexTo));
+    }
 }
