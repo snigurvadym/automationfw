@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
         format = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",
+//                "html:target/destination",
                 "json:target/cucumber-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun.txt"
         })
@@ -23,7 +24,7 @@ public class TestRunner {
         private TestNGCucumberRunner testNGCucumberRunner;
 
         @BeforeClass(alwaysRun = true)
-        public void setUpClass() throws Exception {
+        public void setUpClass() {
             testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
         }
 
@@ -38,7 +39,7 @@ public class TestRunner {
         }
 
         @AfterClass(alwaysRun = true)
-        public void tearDownClass() throws Exception {
+        public void tearDownClass() {
             testNGCucumberRunner.finish();
         }
 }

@@ -31,8 +31,9 @@ public class StepDefinitions {
     }
 
     @Then("^I should see \"([^\"]*)\" in the search results page caption$")
-    public void i_should_see_caption(String searchWord) {
+    public void i_should_see_in_the_search_results_page_caption(String searchWord) {
         assertTrue(Browser.getTitle().toLowerCase().contains(searchWord),
                 String.format("Search word '%s' was not detected in the title", searchWord));
     }
+
 }
